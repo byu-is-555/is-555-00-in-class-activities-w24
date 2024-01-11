@@ -17,15 +17,30 @@ df %>%
 # mass > 50, 
 # arrange by mass
 # note: filtering on some logical excludes NAs
-
+tall_females <- df %>% 
+  filter(height > 100,
+         sex == 'female') %>% 
+  select(name, height, mass, species, films) %>% 
+  filter(mass > 50) %>% 
+  arrange(mass)
 
 # calculate a new column,weight_lbs = mass * 2.204623
 # Make sure it gets saved to the tibble...
-
+df <- df %>% 
+  mutate(weight_lbs = mass*2.204623) 
 
 
 # group and summarize. Pay attention to NAs
 # get a count and mean mass by species
+df %>%
+  group_by(species) %>% 
+  # filter(!is.na(mass)) %>% 
+  summarize(species_count = n(),
+            na_count = sum(is.na(mass)),
+            avg_mass = mean(mass, na.rm = TRUE)) 
+
+df %>% 
+  filter(species == 'Chagrian')
 
 
 # Lots of NAs for average... why? Even for large groups it's NA...
