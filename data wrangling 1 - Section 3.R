@@ -28,15 +28,29 @@ answer_obj_name <- df %>%
 
 df %>% glimpse()
 
+df %>% 
+  filter(height >100, 
+         sex == 'female') %>% 
+  select(name, height, mass, species, films) %>% 
+  filter(mass > 50) %>% 
+  arrange(mass)
 
 # calculate a new column, weight_lbs = mass * 2.204623
 # Make sure it gets saved to the tibble...
 df <- df %>% 
   mutate(weight_lbs = mass * 2.204623) 
+  mutate(weight_lbs = mass * 2.204623)
 
 
 # group and summarize. Pay attention to NAs
 # get a count and mean mass by species
+df %>% 
+  glimpse()
+
+df %>% 
+  group_by(species) %>% 
+  summarize(species_count = n(), 
+            avg_mass = mean(mass, na.rm = TRUE))
 
 df %>% glimpse
 
@@ -69,6 +83,8 @@ df %>%
   slice_max(mass, n = 5)
 
 
+df %>% 
+  slice_max(mass)
 
 # or just using slice_max
 
@@ -78,6 +94,7 @@ df %>%
   group_by(species) %>% 
   slice_min(height, with_ties = F)
 
+  slice_min(height)
 
 
 
