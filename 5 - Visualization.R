@@ -67,7 +67,13 @@ penguins %>%
 
 # histogram with body_mass_g
 # add species as fill color, pay attention to position
-
+penguins %>% 
+  ggplot(aes(x = body_mass_g, color = species, fill = species)) +
+  geom_histogram(alpha = .5, position = 'identity',bins = 15) +
+  ggthemes::theme_clean() +
+  labs(title = 'This is the title',
+       x = "Penguin Weight",
+       y = 'Count')
 
 
 # density curves are sometimes nicer. Let's do the above but with 
@@ -88,7 +94,9 @@ penguins %>%
 
 # Violin plots are cool. Lets look at body mass across islands
 # Notice what happens when we add color now
-
+penguins %>% 
+  ggplot(aes(x = island, y = body_mass_g, fill = species)) +
+  geom_violin()
 
 # Bar plots with both x and  y are a bit more flexible.
 # summary will give us means
