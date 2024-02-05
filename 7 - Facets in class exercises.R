@@ -18,6 +18,7 @@ movies <- read_csv('https://www.dropbox.com/scl/fi/pi7nexxuoqnvviwfzwun9/movie_r
 
 steak <- read_csv('https://www.dropbox.com/scl/fi/mzg5oxenh9oonbwpwgxzm/steak_data.csv?rlkey=2gbf1kfqfkln0zf2alwo32nza&dl=1')
 
+
 # Here's a dumb chart:
 steak %>% 
   ggplot(aes(x = steak_prep, fill = educ)) +
@@ -27,6 +28,7 @@ steak %>%
          x = "Steak Preparation",
          y = "Count") +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 
 # What else can you find? What other variables are in the dataset that might 
 # shed some light on steak-eaters' preferences?
