@@ -67,12 +67,25 @@ penguins %>%
 
 # histogram with body_mass_g
 # add species as fill color, pay attention to position
+penguins %>% 
+  ggplot(aes(x = body_mass_g, color = species, fill = species)) +
+  geom_histogram(alpha)#this line is missing some stuff
+  ggthemes::theme_clean() +
+  labs(title = 'This is the title',
+       x = 'Penguin Weight',
+       y = 'Density')
 
 
 
 # density curves are sometimes nicer. Let's do the above but with 
 # a density curve. Alpha is nice here.
-
+penguins %>% 
+  ggplot(aes(x = body_mass_g, color = species, fill = species)) +
+  geom_density() +
+  ggthemes::theme_clean() +
+  labs(title = 'This is the title',
+       x = 'Penguin Weight',
+       y = 'Density')
 
 
 # bar charts with categoricals: quick, easy counts summary
@@ -102,7 +115,10 @@ penguins %>%
 
 # The classic scatter
 # Important: attributes vs aesthetics. Inheritance
-
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = sex)) +
+  geom_point() +
+  theme_minimal()
 
 
 

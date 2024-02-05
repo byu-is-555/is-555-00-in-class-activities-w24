@@ -174,6 +174,54 @@ bnames %>%
     values_from = n
   )
 
+#Bob Ross dataset - pivot longer
+bob_long <- bob %>% 
+  pivot_longer(
+    cols = !1:4,
+    names_to = 'object',
+    values_to = 'is_present'
+  )
+
+#which objects occur most frequently
+bob_long %>% 
+  group_by(object) %>% 
+  summarise(object_count = sum(is_present == 1))
+# OR
+bob_long %>% 
+  filter(is_present == 1) %>% 
+  count(object)
+  
+#which season did bob paint the most mountains
+bob_long %>% 
+  filter(object == 'mountain',
+         is_present == 1) %>% 
+  group_by(season) %>% 
+  summarise(mtn_count = n()) %>% 
+  arrange(desc(mtn_count))
+  
+# OR
+bob_long %>% 
+  group_by(season) %>% 
+  summarise(mtn_count = sum(object == 'mountain' & is_present == 1)) %>% 
+  arrange(desc(mtn_count))
 
 
+#REFERENCE FOR THE END-TO-END CASE ASSIGNEMENT
+#Create a table that displays one line per attribute with 
+# a count of time that object was used in a season (one column per season)
+bob_long %>% 
+  select(season, object, is_present) %>% 
+  group_by(season, object) %>% 
+  summarise(object_count = sum(is_present)) %>% 
+  pivot_wider(
+    names_from = season,
+    values_from = object_count
+  )
+#here we just handled the aggregation on our own before we hand it off to pivot_wider  
+  
+
+#syntax sugar
+#cols = starts_with('wk')
+  
+  
 
