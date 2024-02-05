@@ -153,6 +153,9 @@ ri %>%
     values_to = 'households'
   )
 
+bob %>% 
+  glimpse
+
 # IMPORTANT: Notice how EASY it is to find the top income for each religion because
 # of the tidying of the data we've done. It's a simple filter, rather than a 
 # group_by(), which is what we used to have to do when the data was wider.
@@ -224,4 +227,33 @@ bob_long %>%
 #cols = starts_with('wk')
   
   
+
+# which objects occur most frequently?
+
+
+
+# What was the season when Bob painted the most mountains?
+
+
+
+#  How do the episodes compare in terms of the variety of objects included?
+
+
+# Has the variety of objects changed over the 30 seasons?
+
+
+# Create a table that displays one line per attribute with a count of times that 
+# object was used in each season (one column per season)
+songs <- read_csv('https://www.dropbox.com/s/85j3vgp7165i1xr/song_chart.csv?dl=1')
+
+
+songs %>% 
+  pivot_longer(
+    cols = starts_with('wk'),
+    names_to = 'week',
+    values_to = 'rank'
+  ) %>% 
+  filter(!is.na(rank)) %>% 
+  filter(week == 'wk1')
+
 
