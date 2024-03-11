@@ -46,7 +46,10 @@ cr_testing <- cr_split %>% testing()
 
 
 # Brief look at prep(), bake(), juice()
-cr_rec %>% prep() %>% juice() %>% glimpse()
+# What are these doing?
+cr_rec %>% prep() 
+cr_rec %>% prep() %>% bake(new_data = cr_training)
+cr_rec %>% prep() %>% juice()
 
 
 # Try it out --------------------------------------------------------------
