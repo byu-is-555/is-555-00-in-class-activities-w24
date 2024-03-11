@@ -72,10 +72,6 @@ flights %>%
   labs(title = 'Distributions of Numeric Features',
        fill = 'Feature')
 
-# Check range of dep_delay column (for log transformation) 
-# (minimum value of -43 minutes...)
-flights$dep_delay %>% summary()
-
 # Check missingness:
 flights %>% summarise(across(everything(), ~sum(is.na(.))))
 med_distance <- median(flights$distance, na.rm = T)
@@ -92,8 +88,7 @@ flights_fe <- flights %>%
   mutate(day_of_week = wday(date, label=T),
          month = month(date, label = T)) %>% 
   mutate(distance = if_else(is.na(distance), med_distance, distance)) %>% 
-  mutate(dep_delay = log(dep_delay+44)) %>% 
-  mutate(across(c(air_time,distance), ~log(.))) %>% 
+  mutate(across(c(air_time,distance,dep_delay), ~log(.))) %>% 
   mutate(across(c(dep_time,air_time,distance,dep_delay), ~as.numeric(scale(.)))) %>% 
   mutate(origin_JFK = if_else(origin=='JFK',1,0),
          origin_LGA = if_else(origin=='LGA',1,0)) %>% 
