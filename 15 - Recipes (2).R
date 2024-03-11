@@ -7,6 +7,10 @@ library(lubridate)
 
 cr_data <- read_csv('https://www.dropbox.com/scl/fi/vykejw5ud9ejjvcc442gd/credit_small.csv?rlkey=zuyurxikxickgdjchh6681j91&dl=1')
 
+cr_data <- cr_data %>% 
+  mutate(status = as.factor(status))
+
+
 cr_data %>% glimpse()
 
 # Missingness:
