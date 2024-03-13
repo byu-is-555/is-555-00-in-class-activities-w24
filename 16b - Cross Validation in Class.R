@@ -19,10 +19,10 @@ cars_rec <- recipe(sellingprice_log ~.,
   step_impute_median(all_numeric_predictors()) %>% 
   step_YeoJohnson(all_numeric_predictors()) %>% 
   step_normalize(all_numeric_predictors()) %>% 
-  step_novel(make, model) %>%
-  step_unknown(make, model) %>% 
-  step_other(make, threshold = 0.03) %>% 
-  step_other(model, threshold = 0.01) %>% 
+  step_novel(make, model) %>%              # <--- These are new. :)
+  step_unknown(make, model) %>%            # <--- These are new. :) 
+  step_other(make, threshold = 0.03) %>%   # <--- These are new. :)  
+  step_other(model, threshold = 0.01) %>%  # <--- These are new. :) 
   step_dummy(all_nominal_predictors())
 
 # cars_rec %>% prep() %>% juice() %>% glimpse()
