@@ -7,6 +7,7 @@ library(tidymodels)
 # install.packages('plumber')
 # install.packages('ranger')
 
+library(ranger)
 library(vetiver)
 library(pins)
 library(plumber)
@@ -85,7 +86,7 @@ housing_wkfl <- workflow() %>%
 
 
 # Let's look at publishing with the pins package:
-# First, create a "pin board"
+# First, create a "pin_board"
 
 
 # Write the (deployable) vetiver model object to the board:
@@ -93,6 +94,8 @@ housing_wkfl <- workflow() %>%
 
 # Boards can hold lots of different models (and versions). These can be listed 
 # and retreived. 
+pin_board %>% pin_list()
+pin_board %>% pin_versions('[model name]')
 
 
 # Moving from a pin board to a docker-based plumber API is as simple as preparing
