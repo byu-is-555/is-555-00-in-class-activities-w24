@@ -5,6 +5,7 @@ library(tidymodels)
 # install.packages('vetiver')
 # install.packages('pins')
 # install.packages('plumber')
+# install.packages('ranger')
 
 library(vetiver)
 library(pins)
