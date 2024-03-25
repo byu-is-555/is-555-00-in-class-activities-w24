@@ -88,13 +88,11 @@ new_rental_listings <- read_csv('https://www.dropbox.com/scl/fi/sgehr76gch8tux9p
 
 
 
-# And plot them together:
-
-
-# Update metrics so that we can use them next time 
+# Update metrics (on the pin_board) so that we can use them next time:
 
 
 
+# Reusable plot from the pin_board "stash":
 
 
 
