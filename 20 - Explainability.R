@@ -65,6 +65,7 @@ explainer_lr <- DALEX::explain(model = final_lr %>% extract_fit_parsnip(),
                                label = "Linear Regression")
 
 # Those warnings lead to an error here. Why?
+# Hint: You can also compare the DALEX::explain() function call above to the one below.
 model_profile(explainer_lr, variables = top_features)
 
 
