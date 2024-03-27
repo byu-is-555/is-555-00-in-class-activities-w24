@@ -87,7 +87,7 @@ final_lr %>% collect_metrics()
 final_xgb %>% collect_metrics()
 
 # Please go here to learn about partial dependence plots:
-# https://chat.openai.com/share/e54aa81b-6df4-4795-8daa-67df28b836f9
+# https://chat.openai.com/share/f391c97a-3133-497c-a853-5227901d1699
 
 # Now see if you can interpret these plots:
 # Why do they look so different? 
